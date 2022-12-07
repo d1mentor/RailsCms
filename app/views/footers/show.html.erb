@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @footer %>
+
+<div>
+  <%= link_to "Edit this footer", edit_footer_path(@footer) %> |
+  <%= link_to "Back to footers", footers_path %>
+
+  <%= button_to "Destroy this footer", @footer, method: :delete %>
+</div>

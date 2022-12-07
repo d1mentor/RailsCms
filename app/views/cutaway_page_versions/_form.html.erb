@@ -1,0 +1,66 @@
+<%= form_with(model: cutaway_page_version) do |form| %>
+  <% if cutaway_page_version.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cutaway_page_version.errors.count, "error") %> prohibited this cutaway_page_version from being saved:</h2>
+
+      <ul>
+        <% cutaway_page_version.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :language_id, style: "display: block" %>
+    <%= form.number_field :language_id %>
+  </div>
+
+  <div>
+    <%= form.label :header, style: "display: block" %>
+    <%= form.text_field :header %>
+  </div>
+
+  <div>
+    <%= form.label :body, style: "display: block" %>
+    <%= form.text_field :body %>
+  </div>
+
+  <div>
+    <%= form.label :index, style: "display: block" %>
+    <%= form.check_box :index %>
+  </div>
+
+  <div>
+    <%= form.label :visible, style: "display: block" %>
+    <%= form.check_box :visible %>
+  </div>
+
+  <div>
+    <%= form.label :images, style: "display: block" %>
+    <%= form.text_area :images %>
+  </div>
+
+  <div>
+    <% if params[:cutaway_page_id] %>
+      <%= form.hidden_field :cutaway_page_id, value: params[:cutaway_page_id] %>
+    <% else %>
+      <%= form.label :cutaway_page_id, style: "display: block" %>
+      <%= form.number_field :cutaway_page_id %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :route_link, style: "display: block" %>
+    <%= form.text_field :route_link %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

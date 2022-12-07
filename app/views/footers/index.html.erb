@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Footers</h1>
+
+<div id="footers">
+  <% @footers.each do |footer| %>
+    <%= render footer %>
+    <p>
+      <%= link_to "Show this footer", footer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New footer", new_footer_path %>

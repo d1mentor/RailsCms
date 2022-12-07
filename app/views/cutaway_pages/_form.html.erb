@@ -1,0 +1,22 @@
+<%= form_with(model: cutaway_page) do |form| %>
+  <% if cutaway_page.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cutaway_page.errors.count, "error") %> prohibited this cutaway_page from being saved:</h2>
+
+      <ul>
+        <% cutaway_page.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :parent_id, style: "display: block" %>
+    <%= form.number_field :parent_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

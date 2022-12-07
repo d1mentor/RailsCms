@@ -1,2 +1,24 @@
-<h1>Development#index</h1>
-<p>Find me in app/views/development/index.html.erb</p>
+<h1>Разработка</h1>  
+
+<h2>Языки <%= link_to "Добавить", new_language_path %></h2>
+<% @languages.each do |lang| %>
+    <p>Язык: <%= lang.code %></p>
+<% end %>
+
+<h2>Страницы <%= link_to "Добавить", new_cutaway_page_path %></h2>
+<% @pages.each do |page| %>
+    <% if page.versions == [] %>
+        <p>Название страницы: Пока нет ни одной версии этой страницы, <%= link_to "Добавить", new_cutaway_page_version_path(cutaway_page_id: page.id) %></p>
+        <p>id страницы: <%= page.id %></p>
+        <p>Языковые версии страницы: Вы ещё не добавили ни одной версии этой страницы. <%= link_to "Добавить", new_cutaway_page_version_path(cutaway_page_id: page.id) %></p>
+    <% else %>
+        <p>Название страницы: <%= page.versions.first.name %></p>
+        <p>id страницы: <%= page.id %></p>
+        <p>Языковые версии страницы:</p>
+        <% page.versions.each do |page_version| %>
+            <p>Название страницы: <%= page_version.name %></p>
+            <p>Название в поисковой строке: /<%= page_version.route_link %></p>
+            <p>Язык: <%= page_version.language.code %></p>
+        <% end %>
+    <% end %>
+<% end %>

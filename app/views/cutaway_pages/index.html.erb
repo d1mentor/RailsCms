@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Cutaway pages</h1>
+
+<div id="cutaway_pages">
+  <% @cutaway_pages.each do |cutaway_page| %>
+    <%= render cutaway_page %>
+    <p>
+      <%= link_to "Show this cutaway page", cutaway_page %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New cutaway page", new_cutaway_page_path %>

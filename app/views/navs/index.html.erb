@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Navs</h1>
+
+<div id="navs">
+  <% @navs.each do |nav| %>
+    <%= render nav %>
+    <p>
+      <%= link_to "Show this nav", nav %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New nav", new_nav_path %>

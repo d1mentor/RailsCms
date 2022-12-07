@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @cutaway_page %>
+
+<div>
+  <%= link_to "Edit this cutaway page", edit_cutaway_page_path(@cutaway_page) %> |
+  <%= link_to "Back to cutaway pages", cutaway_pages_path %>
+
+  <%= button_to "Destroy this cutaway page", @cutaway_page, method: :delete %>
+</div>

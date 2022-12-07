@@ -10,9 +10,90 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_20_183630) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_232646) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cutaway_page_versions", force: :cascade do |t|
+    t.string "name"
+    t.integer "language_id"
+    t.text "header"
+    t.text "body"
+    t.boolean "index", default: false
+    t.boolean "visible", default: true
+    t.text "images"
+    t.integer "cutaway_page_id"
+    t.string "route_link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cutaway_pages", force: :cascade do |t|
+    t.integer "parent_id"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "footers", force: :cascade do |t|
+    t.text "code"
+    t.boolean "active"
+    t.string "name"
+    t.integer "language_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "code"
+    t.boolean "default"
+    t.integer "views"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "navs", force: :cascade do |t|
+    t.text "code"
+    t.boolean "active"
+    t.string "name"
+    t.integer "language_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "script_connects", force: :cascade do |t|
+    t.integer "script_id"
+    t.integer "cutaway_page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scripts", force: :cascade do |t|
+    t.text "code"
+    t.string "description"
+    t.string "link_tag"
+    t.boolean "as_file", default: false
+    t.boolean "for_all_pages", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "style_connects", force: :cascade do |t|
+    t.integer "style_id"
+    t.integer "cutaway_page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "styles", force: :cascade do |t|
+    t.text "code"
+    t.string "description"
+    t.string "link_tag"
+    t.boolean "as_file", default: false
+    t.boolean "for_all_pages", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
