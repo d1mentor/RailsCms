@@ -5,7 +5,6 @@ class CreateCutawayPageVersions < ActiveRecord::Migration[7.0]
       t.integer :language_id
       t.text :header
       t.text :body
-      t.boolean :index, default: false
       t.boolean :visible, default: true
       t.text :images
       t.integer :cutaway_page_id

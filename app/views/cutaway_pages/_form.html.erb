@@ -12,8 +12,23 @@
   <% end %>
 
   <div>
-    <%= form.label :parent_id, style: "display: block" %>
-    <%= form.number_field :parent_id %>
+    <%= form.label "Родительская страница", style: "display: block" %>
+    <%= form.collection_select :parent_id, CutawayPage.all, :id, :name, {prompt: "Это страница без категории"} %>
+  </div>
+
+  <div>
+    <%= form.label "Название", style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label "Описание", style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label "Это корневая страница?", style: "display: block" %>
+    <%= form.check_box :index %>
   </div>
 
   <div>

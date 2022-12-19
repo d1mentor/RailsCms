@@ -1,0 +1,14 @@
+<div id="<%= dom_id cutaway_page %>">
+    <% if cutaway_page.parent_id != nil %>
+      &#8627;<%= link_to cutaway_page.name, cutaway_page %>
+    <% else %>
+      <%= link_to cutaway_page.name, cutaway_page %>
+    <% end %>
+    <% if cutaway_page.children %>
+        <div style="padding-left: 30px;">
+        <% cutaway_page.children.each do |child| %>
+          <%= render "cutaway_page_row", cutaway_page: child %>
+        <% end %>
+        </div>
+    <% end %>
+</div>

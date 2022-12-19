@@ -1,14 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Cutaway pages</h1>
+<div class="container">
+<h1 class="text-center">Страницы <%= link_to "+", new_cutaway_page_path, class: "btn btn-success" %></h1>
 
 <div id="cutaway_pages">
   <% @cutaway_pages.each do |cutaway_page| %>
-    <%= render cutaway_page %>
-    <p>
-      <%= link_to "Show this cutaway page", cutaway_page %>
-    </p>
+    <% if cutaway_page.parent_id == nil %>
+      <div class="poloska"></div>
+      <%= render "cutaway_page_row", cutaway_page: cutaway_page %>
+    <% end %>
   <% end %>
+  <div class="poloska"></div>
 </div>
-
-<%= link_to "New cutaway page", new_cutaway_page_path %>
+</div>

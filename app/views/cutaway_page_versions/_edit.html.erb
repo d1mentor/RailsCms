@@ -1,13 +1,5 @@
-<h1 class="text-center buffer-both mb-5">Создание страницы</h1>
-
-<div class="text-center">
-
-</div>
-
 <div id="editor">
-  <xmp>
-    <p>Этот код уже внутри тега body</p>
-  </xmp>
+    <%= cutaway_page_version.body %>
 </div>
 
 <script>
@@ -19,14 +11,7 @@
 <h2 class="text-center mt-5 mb-5">Дополнительная конфигурация</h2>
 
 <div id="editor-small">
-  <xmp>
-    <title></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-	  <meta name="description" content="">
-	  <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="">
-  </xmp>
+    <%= cutaway_page_version.header %>
 </div>
 
 <script>
@@ -73,7 +58,7 @@
     <%= form.collection_select :language_id, Language.all, :id, :code %>
   </div>
   
-  <%= form.hidden_field :cutaway_page_id, value: params[:cutaway_page_id] %>
+  <%= form.hidden_field :cutaway_page_id, value: cutaway_page_version.cutaway_page.id %>
   <%= form.hidden_field :body %>
   <%= form.hidden_field :header %>
 

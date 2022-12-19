@@ -65,6 +65,6 @@ class StylesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def style_params
-      params.require(:style).permit(:code, :description, :link_tag, :as_file, :for_all_pages)
+      params.require(:style).permit(:code, :description, :link_tag, :name)
     end
 end

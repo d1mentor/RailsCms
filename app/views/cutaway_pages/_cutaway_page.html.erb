@@ -1,7 +1,31 @@
-<div id="<%= dom_id cutaway_page %>">
-  <p>
-    <strong>Parent:</strong>
-    <%= cutaway_page.parent_id %>
-  </p>
+<div id="<%= dom_id cutaway_page %>" class="">
+  <h2>Информация</h2>
+  <% parent = CutawayPage.find_by(id: cutaway_page.parent_id) %>
+  <p><strong>Название: </strong><%= cutaway_page.name %></p>
+  <p><strong>Описание: </strong><%= cutaway_page.description %></p>
+  <p><strong>Это главная страница: </strong><%= cutaway_page.index %></p>
+  <p><strong>Дата создания: </strong><%= cutaway_page.created_at %></p>
+  <p><strong>Дата последнего обновления: </strong><%= cutaway_page.updated_at %></p>
+    <% if parent %>
+      <p><strong>Родитель: </strong><%= link_to parent.name, parent %></p>
+    <% else %>
+      <p><strong>Родитель: </strong>Эта страница является высшей категорией, так как не имеет родителя.</p>
+    <% end %>
 
+    <% if cutaway_page.children != [] %>
+      <p><strong>Дочерние страницы: </strong>
+      <% cutaway_page.children.each do |child| %>
+        <%= link_to child.name, child %> |
+      <% end %></p>
+    <% else %>
+      <p><strong>Дочерние страницы: </strong>Дочерних страниц не найдено</p>
+    <% end %>
+    <h2>Языковые версии этой страницы:</h2>
+    <% cutaway_page.versions.each do |version| %>
+      <p><strong><%= version.language.code.upcase %>: </strong><%= link_to version.name, version %></p>
+    <% end %>
+
+    <%  if cutaway_page.versions == [] %>
+      <p><strong>Ещё не создано ни одной языковой версии для этой страницы! </strong><%= link_to "Добавить", new_cutaway_page_version_path(cutaway_page_id: cutaway_page.id) %></p>
+    <% end %>
 </div>

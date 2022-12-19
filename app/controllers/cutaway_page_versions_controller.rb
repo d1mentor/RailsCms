@@ -65,6 +65,6 @@ class CutawayPageVersionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cutaway_page_version_params
-      params.require(:cutaway_page_version).permit(:name, :language_id, :header, :body, :index, :visible, :images, :cutaway_page_id, :route_link)
+      params.require(:cutaway_page_version).permit(:name, :language_id, :header, :body, :visible, :images, :cutaway_page_id, :route_link)
     end
 end

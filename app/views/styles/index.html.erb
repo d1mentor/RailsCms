@@ -1,14 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Styles</h1>
+<h1 class="text-center">CSS Стили <%= link_to "+", new_style_path, class: "btn btn-success" %></h1>
 
-<div id="styles">
-  <% @styles.each do |style| %>
-    <%= render style %>
-    <p>
-      <%= link_to "Show this style", style %>
-    </p>
-  <% end %>
+<div id="styles" class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Название</th>
+        <th scope="col">Описание</th>
+        <th scope="col">Содержимое</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @styles.each do |style| %>
+        <%= render "styles/style_row", style: style %>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  
 </div>
-
-<%= link_to "New style", new_style_path %>

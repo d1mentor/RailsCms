@@ -1,10 +1,9 @@
-<h1>Editing cutaway page version</h1>
+<h1 class="text-center">Редактирование <%= @cutaway_page_version.language.code.upcase %> версии страницы <%= @cutaway_page_version.cutaway_page.name %></h1>
 
-<%= render "form", cutaway_page_version: @cutaway_page_version %>
-
-<br>
-
-<div>
-  <%= link_to "Show this cutaway page version", @cutaway_page_version %> |
-  <%= link_to "Back to cutaway page versions", cutaway_page_versions_path %>
+<div class="text-center mb-5">
+  <%= link_to "Информация о странице", @cutaway_page_version %> |
+  <%= link_to "Страницы", @cutaway_page_version.cutaway_page %>
 </div>
+
+<%= render "edit", cutaway_page_version: @cutaway_page_version %>
+

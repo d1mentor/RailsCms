@@ -5,15 +5,24 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  <% else %>
-    <%= yield :head %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.14.0/ace.js" integrity="sha512-WYlXqL7GPpZL2ImDErTX0RMKy5hR17vGW5yY04p9Z+YhYFJcUUFRT31N29euNB4sLNNf/s0XQXZfzg3uKSoOdA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <% end %>
+    <%= yield :head %>
+    <%= stylesheet_link_tag "cutaway_style", "data-turbo-track": "reload" %>
+
+    <% Style.all.each do |style| %>
+      <% if style.link_tag != "" && style.link_tag != nil %>
+        <link href="<%= style.link_tag %>" rel="stylesheet">
+      <% end %>
+    <% end %>
   </head>
 
   <body>
+    <% if params[:in_dev_scope].eql? true %>
+      <%= render "layouts/development_nav" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

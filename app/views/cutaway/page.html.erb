@@ -1,5 +1,5 @@
 <% content_for :head do %>
-    <title><%= page.header %></title>
+    <%= page.header.html_safe %>
 <% end %>
 
-<%= page.body %>
+<%= page.body.html_safe %>

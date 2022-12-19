@@ -65,6 +65,6 @@ class CutawayPagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cutaway_page_params
-      params.require(:cutaway_page).permit(:parent_id)
+      params.require(:cutaway_page).permit(:parent_id, :name, :description, :index)
     end
 end

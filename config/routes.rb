@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  resources :navs
-  resources :footers
-  resources :scripts
-  resources :styles
   devise_for :users
 
-  scope :development do
+  scope :development, in_dev_scope: true do
     resources :cutaway_page_versions
     resources :cutaway_pages
     resources :languages
+    resources :navs
+    resources :footers
+    resources :scripts
+    resources :styles
     get 'dashboard', to: 'development#index'
   end
 

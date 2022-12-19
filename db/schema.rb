@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_07_232646) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_232126) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_232646) do
     t.integer "language_id"
     t.text "header"
     t.text "body"
-    t.boolean "index", default: false
     t.boolean "visible", default: true
     t.text "images"
     t.integer "cutaway_page_id"
@@ -31,6 +30,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_232646) do
   create_table "cutaway_pages", force: :cascade do |t|
     t.integer "parent_id"
     t.string "description"
+    t.boolean "index", default: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -61,25 +62,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_232646) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "script_connects", force: :cascade do |t|
-    t.integer "script_id"
-    t.integer "cutaway_page_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "scripts", force: :cascade do |t|
     t.text "code"
     t.string "description"
     t.string "link_tag"
-    t.boolean "as_file", default: false
-    t.boolean "for_all_pages", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "style_connects", force: :cascade do |t|
-    t.integer "style_id"
+    t.string "name"
     t.integer "cutaway_page_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -89,8 +76,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_232646) do
     t.text "code"
     t.string "description"
     t.string "link_tag"
-    t.boolean "as_file", default: false
-    t.boolean "for_all_pages", default: false
+    t.string "name"
+    t.integer "cutaway_page_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

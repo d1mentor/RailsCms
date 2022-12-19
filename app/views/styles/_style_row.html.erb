@@ -1,0 +1,13 @@
+<tr>
+    <td><%= link_to style.name, style %></td>
+    <td><%= style.description %></td>
+    <% if style.code != "" && style.code != nil && style.link_tag != "" && style.link_tag != nil%>
+      <td>Код и ссылка</td>
+    <% elsif style.link_tag != "" && style.link_tag != nil %>
+      <td>Только ссылка</td>
+    <% elsif style.code != "" && style.code != nil %>
+      <td>Только код</td>
+    <% else %>
+      <td>Пусто</td>
+    <% end %>
+</tr>

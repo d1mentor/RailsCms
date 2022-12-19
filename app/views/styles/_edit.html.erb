@@ -12,12 +12,7 @@
   <% end %>
 
   <div id="editor" class="mb-5">
-  <xmp>
-    .simple-block{
-      max-width: 100%;
-      background: black;
-    }
-  </xmp>
+    <%= style.code %>
   </div>
 
   <script>
@@ -28,8 +23,7 @@
 
   <h2>Дополнительная конфигурация</h2>
   <p><strong>*Если заполнить поле "ссылка", ДОПОЛНИТЕЛЬНО будет подключена либа по ссылке!</strong></p>
-  <p><strong>!ВАЖНО! В поле ссылка должна быть ССЫЛКА на библиотеку, а не link тэг</strong></p>
-
+  
   <div>
     <%= form.label "Название", style: "display: block" %>
     <%= form.text_field :name %>

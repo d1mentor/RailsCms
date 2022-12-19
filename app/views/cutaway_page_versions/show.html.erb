@@ -1,10 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @cutaway_page_version %>
+<div class="container text-center">
+  <h1><%= @cutaway_page_version.language.code.upcase %> Версия страницы <%= @cutaway_page_version.cutaway_page.name %></h1>
+  <%= link_to "Редактировать", edit_cutaway_page_version_path(@cutaway_page_version) %> |
+  <%= link_to "К родительской странице", @cutaway_page_version.cutaway_page %>
+</div>
 
-<div>
-  <%= link_to "Edit this cutaway page version", edit_cutaway_page_version_path(@cutaway_page_version) %> |
-  <%= link_to "Back to cutaway page versions", cutaway_page_versions_path %>
+<div class="container">
+  <%= render @cutaway_page_version %>
 
-  <%= button_to "Destroy this cutaway page version", @cutaway_page_version, method: :delete %>
+
+  
+
+  <%= button_to "Удалить эту версию", @cutaway_page_version, method: :delete, class: "btn btn-danger" %>
+</div>
 </div>

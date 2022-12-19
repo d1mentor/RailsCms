@@ -4,8 +4,8 @@ class CreateStyles < ActiveRecord::Migration[7.0]
       t.text :code
       t.string :description
       t.string :link_tag
-      t.boolean :as_file, default: false
-      t.boolean :for_all_pages, default: false
+      t.string :name
+      t.integer :cutaway_page_id
 
       t.timestamps
     end
