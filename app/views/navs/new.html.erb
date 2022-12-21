@@ -1,9 +1,8 @@
-<h1>New nav</h1>
+<div class="text-center mb-3">
+  <h1>Добавление нового навигационного блока</h1>
+  <%= link_to "Список Navs", navs_path %>
+</div>
 
-<%= render "form", nav: @nav %>
-
-<br>
-
-<div>
-  <%= link_to "Back to navs", navs_path %>
+<div class="container">
+  <%= render "form", nav: @nav %>
 </div>

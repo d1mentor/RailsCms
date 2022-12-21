@@ -2,4 +2,12 @@
     <%= page.header.html_safe %>
 <% end %>
 
+<% if Nav.where(active: true, language_id: page.language_id).first %>
+    <%= Nav.where(active: true, language_id: page.language_id).first.code.html_safe %>
+<% end %>
+
 <%= page.body.html_safe %>
+
+<% if Footer.where(active: true, language_id: page.language_id).first %>
+    <%= Footer.where(active: true, language_id: page.language_id).first.code.html_safe %>
+<% end %>

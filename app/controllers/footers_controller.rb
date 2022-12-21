@@ -1,5 +1,6 @@
 class FootersController < ApplicationController
   before_action :set_footer, only: %i[ show edit update destroy ]
+  before_action :set_all_unactive, only: %i[ update create ]
 
   # GET /footers or /footers.json
   def index
@@ -58,6 +59,13 @@ class FootersController < ApplicationController
   end
 
   private
+  def set_all_unactive
+    if footer_params[:active] == true || footer_params[:active] == "1" 
+      Footer.where(language_id: footer_params[:language_id]).each do |footer|
+        footer.update(active: false) if footer.active 
+      end  
+    end  
+  end  
     # Use callbacks to share common setup or constraints between actions.
     def set_footer
       @footer = Footer.find(params[:id])

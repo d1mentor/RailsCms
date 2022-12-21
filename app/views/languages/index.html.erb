@@ -1,14 +1,20 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Languages</h1>
+<div class="container">
+<h1 class="text-center">Языки <%= link_to "+", new_language_path, class: "btn btn-success" %></h1>
 
 <div id="languages">
-  <% @languages.each do |language| %>
-    <%= render language %>
-    <p>
-      <%= link_to "Show this language", language %>
-    </p>
-  <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Код</th>
+        <th scope="col">По умолчанию</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @languages.each do |language| %>
+        <%= render "languages/language_row", language: language %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
-<%= link_to "New language", new_language_path %>
+</div>

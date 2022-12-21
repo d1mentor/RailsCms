@@ -1,9 +1,8 @@
-<h1>New footer</h1>
+<div class="text-center mb-3">
+  <h1>Добавление нового футера</h1>
+  <%= link_to "Список footers", footers_path %>
+</div>
 
-<%= render "form", footer: @footer %>
-
-<br>
-
-<div>
-  <%= link_to "Back to footers", footers_path %>
+<div class="container">
+  <%= render "form", footer: @footer %>
 </div>

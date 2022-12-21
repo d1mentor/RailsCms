@@ -1,14 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Navs</h1>
+<h1 class="text-center">Навигационные блоки <%= link_to "+", new_nav_path, class: "btn btn-success" %></h1>
 
-<div id="navs">
-  <% @navs.each do |nav| %>
-    <%= render nav %>
-    <p>
-      <%= link_to "Show this nav", nav %>
-    </p>
-  <% end %>
+<div id="navs" class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Название</th>
+        <th scope="col">Язык</th>
+        <th scope="col">Состояние</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @navs.each do |nav| %>
+        <%= render "navs/nav_row", nav: nav %>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  
 </div>
-
-<%= link_to "New nav", new_nav_path %>

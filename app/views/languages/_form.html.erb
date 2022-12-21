@@ -12,21 +12,16 @@
   <% end %>
 
   <div>
-    <%= form.label :code, style: "display: block" %>
+    <%= form.label "Код(Например: RU)", style: "display: block" %>
     <%= form.text_field :code %>
   </div>
 
   <div>
-    <%= form.label :default, style: "display: block" %>
+    <%= form.label "Использовать этот язык по умолчанию?", style: "display: block" %>
     <%= form.check_box :default %>
   </div>
 
   <div>
-    <%= form.label :views, style: "display: block" %>
-    <%= form.number_field :views %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Сохранить" %>
   </div>
 <% end %>

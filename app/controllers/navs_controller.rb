@@ -1,5 +1,6 @@
 class NavsController < ApplicationController
   before_action :set_nav, only: %i[ show edit update destroy ]
+  before_action :set_all_unactive, only: %i[ update create ]
 
   # GET /navs or /navs.json
   def index
@@ -58,6 +59,14 @@ class NavsController < ApplicationController
   end
 
   private
+    def set_all_unactive
+      if nav_params[:active] == true || nav_params[:active] == "1" 
+        Nav.where(language_id: nav_params[:language_id]).each do |nav|
+          nav.update(active: false) if nav.active 
+        end  
+      end  
+    end  
+
     # Use callbacks to share common setup or constraints between actions.
     def set_nav
       @nav = Nav.find(params[:id])

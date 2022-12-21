@@ -1,0 +1,9 @@
+<tr>
+    <td><%= link_to nav.name, nav %></td>
+    <td><%= nav.language.code.upcase %></td>
+    <% if nav.active %>
+        <td style="color: green;">Активен</td>
+    <% else %>
+        <td style="color: red;">Выключен</td>
+    <% end %>
+</tr>

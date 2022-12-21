@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 class="text-center">Библиотеки файлов <%= link_to "+", new_library_path, class: "btn btn-success" %></h1>
+
+<div id="footers" class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Название</th>
+        <th scope="col">Описание</th>
+        <th scope="col">Количество файлов</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @libraries.each do |library| %>
+        <%= render "libraries/library_row", library: library %>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  
+</div>

@@ -1,14 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Footers</h1>
+<h1 class="text-center">Футеры <%= link_to "+", new_footer_path, class: "btn btn-success" %></h1>
 
-<div id="footers">
-  <% @footers.each do |footer| %>
-    <%= render footer %>
-    <p>
-      <%= link_to "Show this footer", footer %>
-    </p>
-  <% end %>
+<div id="footers" class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Название</th>
+        <th scope="col">Язык</th>
+        <th scope="col">Состояние</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @footers.each do |footer| %>
+        <%= render "footers/footer_row", footer: footer %>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  
 </div>
-
-<%= link_to "New footer", new_footer_path %>

@@ -1,5 +1,6 @@
 class LanguagesController < ApplicationController
   before_action :set_language, only: %i[ show edit update destroy ]
+  before_action :set_all_unactive, only: %i[ update create ]
 
   # GET /languages or /languages.json
   def index
@@ -58,6 +59,13 @@ class LanguagesController < ApplicationController
   end
 
   private
+    def set_all_unactive
+      if language_params[:default] == true || language_params[:default] == "1" 
+        Language.where(default: true).each do |lang|
+          lang.update(default: false) if lang.default 
+        end  
+      end  
+    end  
     # Use callbacks to share common setup or constraints between actions.
     def set_language
       @language = Language.find(params[:id])

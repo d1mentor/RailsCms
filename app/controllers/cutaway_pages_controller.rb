@@ -1,5 +1,6 @@
 class CutawayPagesController < ApplicationController
   before_action :set_cutaway_page, only: %i[ show edit update destroy ]
+  before_action :unindex_all, only: %i[ create update ]
 
   # GET /cutaway_pages or /cutaway_pages.json
   def index
@@ -58,6 +59,13 @@ class CutawayPagesController < ApplicationController
   end
 
   private
+    def unindex_all
+      if cutaway_page_params[:index] == true || cutaway_page_params[:index] == "1" 
+        CutawayPage.where(index: true).each do |cp|
+          cp.update(index: false) if cp.index
+        end  
+      end  
+    end  
     # Use callbacks to share common setup or constraints between actions.
     def set_cutaway_page
       @cutaway_page = CutawayPage.find(params[:id])

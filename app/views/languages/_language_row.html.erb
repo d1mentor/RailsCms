@@ -1,0 +1,8 @@
+<tr>
+    <td><%= link_to language.code.upcase, language %></td>
+    <% if language.default %>
+        <td style="color: green;">По умолчанию</td>
+    <% else %>
+        <td style="color: red;">Не по умолчанию</td>
+    <% end %>
+</tr>

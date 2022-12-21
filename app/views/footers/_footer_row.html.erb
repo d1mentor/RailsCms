@@ -1,0 +1,9 @@
+<tr>
+    <td><%= link_to footer.name, footer %></td>
+    <td><%= footer.language.code.upcase %></td>
+    <% if footer.active %>
+        <td style="color: green;">Активен</td>
+    <% else %>
+        <td style="color: red;">Выключен</td>
+    <% end %>
+</tr>

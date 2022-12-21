@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :footers
     resources :scripts
     resources :styles
+    resources :libraries
     get 'dashboard', to: 'development#index'
   end
 
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   end  
 
   scope "/:locale" do
+    get 'switch_lang', to: 'cutaway#switch_lang'
     get ':page_link', to: 'cutaway#render_page'
   end  
 

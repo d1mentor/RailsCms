@@ -1,0 +1,26 @@
+
+<div id="<%= dom_id library %>">
+  
+  <p>
+    <strong>Название:</strong>
+    <%= library.name %>
+  </p>
+
+  <p>
+    <strong>Описание:</strong>
+    <%= library.description %>
+  </p>
+
+  <p>
+    <strong>Содержимое:</strong>
+    <div class="media-lib">
+      <% library.library_items.each do |item| %>
+      <figure>
+        <%= image_tag item.url, class: "lib-item" %>
+        <figcaption class="text-center"><%= item.identifier %></figcaption>
+      </figure>
+      <% end %>
+    </div>
+  </p>
+
+</div>
