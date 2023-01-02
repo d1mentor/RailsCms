@@ -75,4 +75,6 @@ class CutawayPagesController < ApplicationController
     def cutaway_page_params
       params.require(:cutaway_page).permit(:parent_id, :name, :description, :index)
     end
+
+    
 end

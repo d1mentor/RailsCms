@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :styles
     resources :libraries
     get 'dashboard', to: 'development#index'
+    get 'faq', to: 'development#faq'
   end
 
   scope :bookkeep do 

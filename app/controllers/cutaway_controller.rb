@@ -1,9 +1,6 @@
 class CutawayController < ApplicationController
   def index
-    #Тут определить локаль(Или дефолтную взять), и редирект на нужную индекс версию
-  end
-
-  def about_us
+    redirect_to '/ru/index-path'
   end
 
   def switch_lang
@@ -14,6 +11,16 @@ class CutawayController < ApplicationController
   
   def render_page
     @url = params[:page_link]
+
+    if @url == 'index-path'
+      page_version = CutawayPage.where(index: true).first.versions.find_by(language_id: Language.where(code: params[:locale]).first.id)
+      if page_version
+        redirect_to "/#{params[:locale]}/#{page_version.route_link}" and return
+      else 
+        page_version = CutawayPage.where(index: true).first.versions.first
+        redirect_to "/#{params[:locale]}/#{page_version.route_link}" and return
+      end 
+    end
 
     CutawayPage.all.each do |page|
       page.versions.each do |page_version|

@@ -1,24 +1,19 @@
-<h1>Разработка</h1>  
+<div class="container">
+  <h1 class="text-center mt-3">Обзор сайта</h1>  
 
-<h2>Языки <%= link_to "Добавить", new_language_path %></h2>
-<% @languages.each do |lang| %>
-    <p>Язык: <%= lang.code %></p>
-<% end %>
-
-<h2>Страницы <%= link_to "Добавить", new_cutaway_page_path %></h2>
-<% @pages.each do |page| %>
-    <% if page.versions == [] %>
-        <p>Название страницы: Пока нет ни одной версии этой страницы, <%= link_to "Добавить", new_cutaway_page_version_path(cutaway_page_id: page.id) %></p>
-        <p>id страницы: <%= page.id %></p>
-        <p>Языковые версии страницы: Вы ещё не добавили ни одной версии этой страницы. <%= link_to "Добавить", new_cutaway_page_version_path(cutaway_page_id: page.id) %></p>
-    <% else %>
-        <p>Название страницы: <%= page.versions.first.name %></p>
-        <p>id страницы: <%= page.id %></p>
-        <p>Языковые версии страницы:</p>
-        <% page.versions.each do |page_version| %>
-            <p>Название страницы: <%= page_version.name %></p>
-            <p>Название в поисковой строке: /<%= page_version.route_link %></p>
-            <p>Язык: <%= page_version.language.code %></p>
-        <% end %>
+  <h2>Ошибки строения сайта:</h2>
+  <% @site_warnings.each do |warning| %>
+    <% if warning %>
+      <% if warning.size == 1 %>
+        <p><strong>> <%= warning.first %></strong></p>
+      <% else %>  
+        <p><strong>> <%= warning.first %></strong> |
+        <% warning.last.each do |obj| %>
+          <%= link_to obj.name, obj %> |
+        <% end %></p>
+      <% end %>
     <% end %>
-<% end %>
+  <% end %>
+
+  <h2>Ошибки SEO:</h2>
+</div>
