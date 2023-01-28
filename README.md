@@ -1,24 +1,19 @@
-# README
+# About application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+RailsCMS - cms using which you can create a multilingual, multi-page site, edit and add content.
 
-Things you may want to cover:
+# System dependencies
 
-* Ruby version
+The program has been tested and works stably with the following configuration:
 
-* System dependencies
+Ubuntu 20.04
 
-* Configuration
+Ruby 3.0.0
 
-* Database creation
+Bundler 2.2.3
 
-* Database initialization
+Rails 7.0.4
 
-* How to run the test suite
+ImageMagick 6.9.11-60 Q16 x86_64 2021-01-25
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+psql (PostgreSQL) 14.5 
